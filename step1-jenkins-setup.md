@@ -5,7 +5,7 @@
 * Creating an instance is out of scope but make sure you set it up in your default VPC and the security group you are using allows TCP traffic. If you do not know it yet, I would recommend go through some decent tutorial on how to spin up an EC2 instance in AWS. There are plenty of resources online for that.
 * Notice the AMI I am using in below screen shot: ```bitnami-jenkins-2.426.2-0-linux-debian-11-x86_64-hvm-ebs-nami-447af561-b7e2-4d03-8a67-4842db5439cb```
 
-* ![Alt text](image.png)
+* ![Alt text](ss/image.png)
 
 * Once you have the instance up and running navigate to the public url of your server and it should serve the jenkins login page.
 * Username is : ```user``` but password has to be retrieved. Instructions on how to retrieve the password is listed here: https://docs.bitnami.com/aws/faq/get-started/find-credentials/

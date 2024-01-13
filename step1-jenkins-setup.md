@@ -49,3 +49,10 @@
 
 ```
 
+* There are still some additional step which needs to be done to make docker commands run on this instance
+    * ```sudo usermod -aG docker jenkins```
+    * If after the above command you still get docker.sock permission error then below command should solve the issue. But below command is not a safe thing to do. So, do not do this in prod set up.
+    * ```sudo chmod 777 /var/run/docker.sock```
+    * Check the error and solution here: https://www.edureka.co/community/7764/trying-docker-jenkins-pipeline-facing-jenkins-pipeline-socket
+    
+

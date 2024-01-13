@@ -22,6 +22,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo "Hello World Build stage."'
+                sh 'docker info'
             }
         }
         stage('Test') {
@@ -36,7 +37,9 @@ pipeline {
         }
     }
 }
+
 ```
+
 ![Alt text](ss/image-7.png)
 
 * Click on the Console Output

@@ -13,5 +13,33 @@
 * Configure the project as per below screenshot:
 ![Alt text](ss/image-6.png)
 
-* Project expect a Jenkinsfile in the root directory of the project. Lets add that.
+* Project expect a Jenkinsfile in the root directory of the project. Lets add that with below code snippet and check in the code. After checkin the code run the pipeline.
+
+```
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo "Hello World Build stage."'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'echo "Hello World Test stage."'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo "Hello World Deploy stage."'
+            }
+        }
+    }
+}
+```
+![Alt text](ss/image-7.png)
+
+* Click on the Console Output
+![Alt text](ss/image-8.png)
+
 

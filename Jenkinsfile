@@ -29,10 +29,10 @@ pipeline {
             steps {
                 script{
                     withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        cd app/express-js-app
-                        docker build -t docker.io/333743/express-js-app:latest .
-                        docker login -u ${USERNAME} -p ${PASSWORD}
-                        docker push docker.io/333743/express-js-app:latest
+                        sh "cd app/express-js-app"
+                        sh "docker build -t docker.io/333743/express-js-app:latest ."
+                        sh "docker login -u ${USERNAME} -p ${PASSWORD}"
+                        sh "docker push docker.io/333743/express-js-app:latest"
                     }
                 }
             }

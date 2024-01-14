@@ -45,8 +45,8 @@ pipeline {
         stage('Deploy to Dev Namespace') {
             steps {
                 sh '''
-                   kubectl create deployment express-js-app --image=docker.io/333743/express-js-app:latest -n dev-ns
-                   kubectl expose deployment express-js-app --type=NodePort --port=3000 -n dev-ns
+                   sudo kubectl create deployment express-js-app --image=docker.io/333743/express-js-app:latest -n dev-ns -v=6
+                   sudo kubectl expose deployment express-js-app --type=NodePort --port=3000 -n dev-ns -v=6
                 '''
             }
         }

@@ -29,19 +29,25 @@ pipeline {
             steps {
                 script{
                     withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        sh '''cd apps/express-js-app
+                        sh '''
+
+                        cd apps/express-js-app
                         docker build -t docker.io/333743/express-js-app:latest .
                         docker login -u ${USERNAME} -p ${PASSWORD}
                         docker push docker.io/333743/express-js-app:latest
+
                         '''
                     }
                 }
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy to Dev Namespace') {
             steps {
-                sh 'echo "Hello World Deploy stage."'
+                sh '''
+                   kubectl create deployment express-js-app --image=docker.io/333743/express-js-app:latest -n dev-ns
+                   kubectl expose deployment express-js-app --type=NodePort --port=3000 -n dev-ns
+                '''
             }
         }
     }

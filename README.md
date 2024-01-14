@@ -16,5 +16,7 @@
 Lets start:
 
 1. Set up Jenkins server on AWS. [Step 1 Jenkins Set Up on AWS EC2](step1-jenkins-setup.md)
-2. Create the Project
+2. Create the Project [Step 2 Jenkins Create Project](step2-jenkins-create-project.md)
+3. Create an express JS App [Create an Express JS App](apps/express-js-app/README.md)
+4. Set up micro k8s server [Set Up a Microk8s app](step2-jenkins-create-project.md)
 

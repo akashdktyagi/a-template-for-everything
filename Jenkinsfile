@@ -1,20 +1,43 @@
 pipeline {
-    agent none
+   agent none
+
+   environment {
+        // Declare environment variables
+        MY_VARIABLE = 'Hello, World!'
+    }
+
     stages {
-        stage('Build') {
+        stage('SAST') {
             steps {
-                sh 'echo "Hello World Build stage."'
-                sh 'docker info'
+                sh 'echo "SAST - Yet to be implemented"'
+                // Access environment variables
+                echo "My Variable: ${env.MY_VARIABLE}"                
             }
         }
-        stage('Test') {
+        stage('Dependency Scan') {
             steps {
-                sh 'echo "Hello World Test stage from inside Docker."'
-                sh 'mvn -B clean install'
-  
+                sh 'echo "Dep Scan - Yet to be implemented"'
             }
 
+        }        
+        stage('Container Scan') {
+            steps {
+                sh 'echo "Container Scan - Yet to be implemented"'
+            }
+        }            
+        stage('Docker Build and Push') {
+            steps {
+                script{
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        cd app/express-js-app
+                        docker build -t docker.io/333743/express-js-app:latest .
+                        docker login -u ${USERNAME} -p ${PASSWORD}
+                        docker push docker.io/333743/express-js-app:latest
+                    }
+                }
+            }
         }
+
         stage('Deploy') {
             steps {
                 sh 'echo "Hello World Deploy stage."'

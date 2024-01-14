@@ -54,5 +54,19 @@
     * If after the above command you still get docker.sock permission error then below command should solve the issue. But below command is not a safe thing to do. So, do not do this in prod set up.
     * ```sudo chmod 777 /var/run/docker.sock```
     * Check the error and solution here: https://www.edureka.co/community/7764/trying-docker-jenkins-pipeline-facing-jenkins-pipeline-socket
+
+### Install Semgrep for SAST scan
+* https://semgrep.dev/docs/getting-started/quickstart/
+
+```
+# install
+python3 -m pip install semgrep
+
+# confirm
+semgrep --version
+
+```
+
+*
     
 

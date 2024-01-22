@@ -66,4 +66,19 @@ microk8s kubectl -n kube-system describe secret $token
 
 ```
 
+* To expose the Dashboard to the outside world we need to change the dashboard service file from Cluster IP to Node Port. 
+
+```
+NAMESPACE            NAME                                TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                  AGE
+kube-system          service/kubernetes-dashboard        NodePort    10.152.183.84   <none>        443:30881/TCP            8d
+
+```
+* To do this you need run ```microk8s kubectl edit service/kubernetes-dashboard  -n kube-system```
+* edit the spec.type as "NodePort" (See the third last line in screen shot)
+* ![Alt text](image.png)
+* This will expose the dashboard to 443:30881/TCP . in my case port 30881. Be sure tou use https file navigating from the browser.
+
+* However there is also another way of exposing an internal cluster ip service to out side world that is via Ingress and Ingress Controller. lets see how in the next page.
+
+
 
